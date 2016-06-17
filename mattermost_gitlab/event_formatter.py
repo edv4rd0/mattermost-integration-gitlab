@@ -72,9 +72,10 @@ class PushEvent(BaseEvent):
         if self.data['total_commits_count'] > 1:
             description += "s"
 
-        return '%s pushed %s into the `%s` branch for project [%s](%s).' % (
+        return '%s pushed [%s](%s) into the `%s` branch for project [%s](%s).' % (
             self.data['user_name'],
             description,
+            self.data['repository']['homepage'] + '/commit/' + self.data['after'],
             self.data['ref'],
             self.data['repository']['name'],
             self.data['repository']['homepage']
